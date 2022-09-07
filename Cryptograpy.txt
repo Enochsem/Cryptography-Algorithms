@@ -1,0 +1,16 @@
+Ek(m) = m+k mod 26
+E9(d) = d + 9 mod 26
+E9(d) = 3 + 9 mod 26
+E9(d) = 12 mod 26
+E9(d) = 12
+E9(d) = m
+
+Dk(c) = c-k mod 26
+D9(m) = m - 9 mod 26
+D9(m) = 12 - 9 mod 26
+D9(m) = 3 mod 26
+D9(m) = 3
+D9(m) = d
+
+
+
