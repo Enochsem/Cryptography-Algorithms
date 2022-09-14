@@ -4,28 +4,6 @@ alphabets = string.ascii_lowercase
 alphabetsLenght = len(alphabets)
 
 
-def shift(message, key):
-    keyIndex = alphabets.index(key)
-    letters = list(message)
-    for letter in letters:
-        letterIndex = alphabets.index(letter)
-        cipherIndex = letterIndex + keyIndex
-        ciphertext = alphabets[cipherIndex]
-        print("c:",ciphertext)
-        # letters.insert(cipherIndex, ciphertext)
-    return ''.join(ciphertext)
-
-def shift2(message,key):
-    keyIndex = alphabets.index(key)
-    message = list(message)
-    for letter in range(len(message)):
-        letterIndex = alphabets.index(message[letter])
-        cipherIndex = letterIndex + keyIndex
-        ciphertext = alphabets[cipherIndex]
-        message.remove(message[letter])
-        message.insert(letter, ciphertext)
-    return "".join(message)
-
 
 def shift3(message,key):
     keyIndex = alphabets.index(key)
@@ -46,6 +24,29 @@ def shift3(message,key):
             final.append(" ")
     return "".join(final)
 
+
+def shift3decrypt(ciphertexts,key): # m=ciphertext
+    keyIndex = alphabets.index(key)
+    final =[]
+    ciphertexts = list(ciphertexts)
+    for letter in range(len(ciphertexts)):
+        if ciphertexts[letter] != " ":
+            letterIndex = alphabets[::-1].index(ciphertexts[letter]) #pick from the reversed letters
+            cipherIndex = letterIndex + keyIndex
+            lettersLeft = (len(alphabets)-1) -  cipherIndex
+            if cipherIndex <= len(alphabets)-1:
+                message = alphabets[::-1][cipherIndex]
+                final.append(message.lower())
+            else:
+                message = alphabets[::-1][abs(lettersLeft)-1] # pick from index value
+                final.append(message.lower())
+        else:
+            final.append(" ")
+    return "".join(final)
+
+
+
+#breaking down the above
 
 def physicalShift(message,key):
     keyIndex = alphabets.index(key)
@@ -73,27 +74,6 @@ def cipherShift(indexOverflow,cipherIndex):
     return result
             
 
-def shift3decript(ciphertexts,key): # m=ciphertext
-    keyIndex = alphabets.index(key)
-    final =[]
-    ciphertexts = list(ciphertexts)
-    for letter in range(len(ciphertexts)):
-        if ciphertexts[letter] != " ":
-            letterIndex = alphabets[::-1].index(ciphertexts[letter]) #pick from the reversed letters
-            cipherIndex = letterIndex + keyIndex
-            lettersLeft = (len(alphabets)-1) -  cipherIndex
-            #print(alphabets[::-1])
-            print("ci:",cipherIndex, "left:",lettersLeft)
-            if cipherIndex <= len(alphabets)-1:
-                print("ci", cipherIndex, "al:", alphabets[::-1][cipherIndex], "left:", lettersLeft)
-                message = alphabets[::-1][cipherIndex]
-                final.append(message.lower())
-            else:
-                message = alphabets[::-1][abs(lettersLeft)-1] # pick from index value
-                final.append(message.lower())
-        else:
-            final.append(" ")
-    return "".join(final)
 
 
 

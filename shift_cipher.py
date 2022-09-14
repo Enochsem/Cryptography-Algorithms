@@ -14,6 +14,7 @@ def encrypt(message, key):
             cipherText.append(" ")
     return cipherText
 
+
 def getText(cipherNumber):
     cipherText = []
     alphabets = list(string.ascii_lowercase)
@@ -24,6 +25,7 @@ def getText(cipherNumber):
         else:
             cipherText.append(" ")
     return "".join(cipherText)
+
 
 def decryption(cipherText, key):
     plainText = []
@@ -39,13 +41,12 @@ def decryption(cipherText, key):
             plainText.append(" ")
     return plainText
 
-key = 9
 
+key = 9
 cipherNumbers = encrypt("Department of computer science", key)
 #[12, 13, 24, 9, 0, 2, 21, 13, 22, 2, ' ', 23, 14,' ',...
 getText(cipherNumbers)
 #cipher Text: mnyjacvnwc xo lxvydcna blrnwln
-
 textNumbers = decryption(ci, key)
 #[3, 4, 15, 0, 17, 19, 12, 4, 13, 19, ' ', 14, 5, ' ',...
 getText(textNumbers)

@@ -1,4 +1,4 @@
-"""Programe to solve my assignment for me """
+"""Programe to solve my assignment for me  using the Formal definition"""
 '''
 shift cypher
 Enc k => Ek(x) = x+k mod 26
