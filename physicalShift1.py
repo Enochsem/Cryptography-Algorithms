@@ -65,7 +65,7 @@ def physicalShift(message,key):
 
 def cipherShift(indexOverflow,cipherIndex):
     result = []
-    if cipherIndex <= (alphabetsLenght-1): #checing max index
+    if cipherIndex <= (alphabetsLenght-1): #cheking max index
         ciphertext = alphabets[cipherIndex]
         result.append(ciphertext.lower())
     else:

@@ -31,5 +31,29 @@ def vigenereCipher(message, key):
 
 #print(vigenereCipher("systemsecurity", "security"))
 
-def vigenereDecript():
-    pass
+def vigenereDecript(cipherText, key):
+    global alphabetsLength
+    finalData = []
+    newKey = key
+    cipherTextLength = len(cipherText)
+    keyLength = len(key)
+    cipherText2KeyOverflow = abs(cipherTextLength - keyLength)
+    for r in range(cipherTextLength-keyLength):
+        for i in key: #key fill
+            if len(newKey) < cipherTextLength:
+                newKey += i
+
+    for c in range(cipherTextLength):
+        msgIndex = abs(alphabets.index(newKey[c]) - alphabets.index(cipherText[c]))
+        msgIndexOverflow = abs(msgIndex - (alphabetsLength-1))
+        if msgIndex <= (alphabetsLength-1):
+            msg = alphabets[msgIndex]
+            finalData.append(msg)
+        else:
+            msg = alphabets[abs(msgIndexOverflow)-1] # pick from index value
+            finalData.append(alphabets[msg])
+        return "".join(finalData)
+        
+    
+
+print(vigenereDecript("kcunvulcuytckg", "security"))
