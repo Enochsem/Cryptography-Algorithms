@@ -29,7 +29,7 @@ def vigenereCipher(message, key):
 #system security and control
 #kcunvu lcuytckg tlv gqhkzhj
 
-#print(vigenereCipher("systemsecurity", "security"))
+print(vigenereCipher("systemsecurity", "security"))
 
 def vigenereDecript(cipherText, key):
     global alphabetsLength
@@ -42,17 +42,24 @@ def vigenereDecript(cipherText, key):
         for i in key: #key fill
             if len(newKey) < cipherTextLength:
                 newKey += i
+    print(newKey)
 
     for c in range(cipherTextLength):
-        msgIndex = abs(alphabets.index(newKey[c]) - alphabets.index(cipherText[c]))
+        msgIndex = alphabets.index(cipherText[c]) - alphabets.index(newKey[c])
         msgIndexOverflow = abs(msgIndex - (alphabetsLength-1))
-        if msgIndex <= (alphabetsLength-1):
+        if msgIndex < 0:
+            msgIndex = msgIndex + alphabetsLength #+26 if msgIndex is negative
             msg = alphabets[msgIndex]
+            finalData.append(msg)
+        elif msgIndex <= (alphabetsLength-1) and msgIndex >= 1:
+            msg = alphabets[msgIndex]
+            #print('1',msg)
             finalData.append(msg)
         else:
             msg = alphabets[abs(msgIndexOverflow)-1] # pick from index value
-            finalData.append(alphabets[msg])
-        return "".join(finalData)
+            #print('2', msg)
+            finalData.append(msg)
+    return "".join(finalData)
         
     
 
