@@ -42,7 +42,6 @@ def vigenereDecript(cipherText, key):
         for i in key: #key fill
             if len(newKey) < cipherTextLength:
                 newKey += i
-    print(newKey)
 
     for c in range(cipherTextLength):
         msgIndex = alphabets.index(cipherText[c]) - alphabets.index(newKey[c])
@@ -53,11 +52,9 @@ def vigenereDecript(cipherText, key):
             finalData.append(msg)
         elif msgIndex <= (alphabetsLength-1) and msgIndex >= 1:
             msg = alphabets[msgIndex]
-            #print('1',msg)
             finalData.append(msg)
         else:
             msg = alphabets[abs(msgIndexOverflow)-1] # pick from index value
-            #print('2', msg)
             finalData.append(msg)
     return "".join(finalData)
         
