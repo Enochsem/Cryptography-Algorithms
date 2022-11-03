@@ -31,6 +31,17 @@ def vigenereCipher(message, key):
 
 print(vigenereCipher("systemsecurity", "security"))
 
+def removeSpace(data):
+    spaceIndex = []
+    for i in range(len(data)):
+        if data[i] == "":
+            spaceIndex.append(data.index(data[i]))
+        else:
+            return data
+
+
+
+
 def vigenereDecript(cipherText, key):
     global alphabetsLength
     finalData = []
@@ -50,7 +61,7 @@ def vigenereDecript(cipherText, key):
             msgIndex = msgIndex + alphabetsLength #+26 if msgIndex is negative
             msg = alphabets[msgIndex]
             finalData.append(msg)
-        elif msgIndex <= (alphabetsLength-1) and msgIndex >= 1:
+        elif msgIndex <= (alphabetsLength-1) and msgIndex >= 0:
             msg = alphabets[msgIndex]
             finalData.append(msg)
         else:
