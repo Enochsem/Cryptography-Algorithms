@@ -43,7 +43,6 @@ def vigenereCipher(message, key):
     finalData = addSpace(finalData)
     return "".join(finalData)
 
-
 def vigenereDecipher(cipherText, key):
     global alphabetsLength
     finalData = []
@@ -63,7 +62,7 @@ def vigenereDecipher(cipherText, key):
     return "".join(finalData)
         
 
-vigenereCipher("system security and control", "security")
+cipherText = vigenereCipher("system security and control", "security")
 #kcunvu lcuytckg tlv gqhkzhj
 vigenereDecipher(cipherText, "security")
 #system security and control
