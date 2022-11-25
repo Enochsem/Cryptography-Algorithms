@@ -4,6 +4,8 @@ import string
 
 class SEncrypt():
 
+    ALPHABETS = string.ascii_lowercase
+    ALPHABETS_LENGHT = len(self.ALPHABETS)
     spaceIndex = []
 
     def __init__(self, data, encrypt=None, decrypt=None):
@@ -19,7 +21,7 @@ class SEncrypt():
         return self.data
 
     def addSpace(self):
-        for i, element in enumerate(self.spaceIndex):
+        for c, element in enumerate(self.spaceIndex):
             list(self.data).insert(element, " ")
         self.clearSpaceIndex()
         return self.data
@@ -27,6 +29,15 @@ class SEncrypt():
     def clearSpaceIndex(self):
         self.spaceIndex.clear() 
 
+    def keyFill(key, dataLength, keyLength):
+        newKey = ""
+        for r in range(dataLength-keyLength):
+            for i in key: 
+                if len(newKey) < dataLength:
+                    newKey += i
+        return newKey
+
+    
 
 
 if __name__ == "__main__":

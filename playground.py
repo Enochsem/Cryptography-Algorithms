@@ -23,5 +23,12 @@ def removeSpace1(data):
         return data.replace(" ", "")
     return data
 
-removeSpace1("hellow just testing this")
-print(spaceIndex)
+v="yg"
+def fun(n):
+    global v
+    return v+ n
+a = "hello"
+print(list(map(fun, a)))
+
+# removeSpace1("hellow just testing this")
+# print(spaceIndex)
