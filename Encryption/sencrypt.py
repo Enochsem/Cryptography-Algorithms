@@ -12,6 +12,7 @@ class SEncrypt():
         self.encrypt = encrypt
         self.decrypt = decrypt
         self.data = data
+        self.done = False
 
     
     def removeSpace(self):
