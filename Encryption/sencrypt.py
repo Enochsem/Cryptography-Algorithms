@@ -30,7 +30,7 @@ class SEncrypt():
     def clearSpaceIndex(self):
         self.spaceIndex.clear() 
 
-    def keyFill(key, dataLength, keyLength):
+    def keyFill(self, key, dataLength, keyLength):
         newKey = ""
         for r in range(dataLength-keyLength):
             for i in key: 
