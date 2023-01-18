@@ -55,7 +55,7 @@ class SEncrypt():
 
 
 if __name__ == "__main__":
-    se = SEncrypt("Hello there just testing")
+    se = SEncrypt("Hello there just testing new sentence")
     print(se.spaceIndex)
     print(se.removeSpace())
     print(se.spaceIndex)
