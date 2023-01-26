@@ -53,7 +53,7 @@ class SEncrypt():
         return "".join(finalData)
     
 
-    def vigenereDecipher(cipherText, key):
+    def vigenereDecipher(self, cipherText, key):
         global alphabetsLength
         finalData = []
         cipherText = removeSpace(cipherText)  #remove whitespace
