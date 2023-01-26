@@ -54,7 +54,7 @@ class SEncrypt():
     
 
     def vigenereDecipher(self, cipherText, key):
-        global self.ALPHABETS_LENGHT
+        #global self.ALPHABETS_LENGHT
         finalData = []
         cipherText = removeSpace(cipherText)  #remove whitespace
         newKey = keyFill(key, len(cipherText), len(key)) #key fill
