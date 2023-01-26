@@ -44,8 +44,8 @@ class SEncrypt():
         newKey = self.keyFill(key, len(message), len(key)) #key fill
         for letter in range(len(message)):
             cipherIndex = self.ALPHABETS.index(message[letter]) + self.ALPHABETS.index(newKey[letter])
-            cipherIndexOverflow = abs(alphabetsLength - cipherIndex)
-            if cipherIndex < alphabetsLength:
+            cipherIndexOverflow = abs(self.ALPHABETS_LENGHT - cipherIndex)
+            if cipherIndex < self.ALPHABETS_LENGHT:
                 finalData.append(self.ALPHABETS[cipherIndex])
             else:
                 finalData.append(self.ALPHABETS[cipherIndexOverflow])
@@ -54,17 +54,17 @@ class SEncrypt():
     
 
     def vigenereDecipher(self, cipherText, key):
-        global alphabetsLength
+        global self.ALPHABETS_LENGHT
         finalData = []
         cipherText = removeSpace(cipherText)  #remove whitespace
         newKey = keyFill(key, len(cipherText), len(key)) #key fill
         for c in range(len(cipherText)):
             msgIndex = alphabets.index(cipherText[c]) - alphabets.index(newKey[c])
-            msgIndexOverflow = abs(msgIndex - (alphabetsLength-1))
+            msgIndexOverflow = abs(msgIndex - (self.ALPHABETS_LENGHT-1))
             if msgIndex < 0:
-                msgIndex = msgIndex + alphabetsLength # +26 if msgIndex is negative
+                msgIndex = msgIndex + self.ALPHABETS_LENGHT # +26 if msgIndex is negative
                 finalData.append(alphabets[msgIndex])
-            elif msgIndex <= (alphabetsLength-1) and msgIndex >= 0: #0 <= msgIndex <= 25
+            elif msgIndex <= (self.ALPHABETS_LENGHT-1) and msgIndex >= 0: #0 <= msgIndex <= 25
                 finalData.append(alphabets[msgIndex])
             else: # pick from index value
                 finalData.append(alphabets[abs(msgIndexOverflow)-1])
