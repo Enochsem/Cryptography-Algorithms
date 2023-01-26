@@ -43,12 +43,12 @@ class SEncrypt():
         message = self.removeSpace(message) #remove whitespace
         newKey = self.keyFill(key, len(message), len(key)) #key fill
         for letter in range(len(message)):
-            cipherIndex = ALPHABETS.index(message[letter]) + ALPHABETS.index(newKey[letter])
+            cipherIndex = self.ALPHABETS.index(message[letter]) + self.ALPHABETS.index(newKey[letter])
             cipherIndexOverflow = abs(alphabetsLength - cipherIndex)
             if cipherIndex < alphabetsLength:
-                finalData.append(ALPHABETS[cipherIndex])
+                finalData.append(self.ALPHABETS[cipherIndex])
             else:
-                finalData.append(ALPHABETS[cipherIndexOverflow])
+                finalData.append(self.ALPHABETS[cipherIndexOverflow])
         finalData = addSpace(finalData)
         return "".join(finalData)
     
