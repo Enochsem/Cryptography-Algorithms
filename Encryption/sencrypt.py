@@ -40,7 +40,7 @@ class SEncrypt():
     
     def vigenereCipher(self, message, key):
         finalData = []
-        message = self.removeSpace(message) #remove whitespace
+        message = self.removeSpace() #remove whitespace
         newKey = self.keyFill(key, len(message), len(key)) #key fill
         for letter in range(len(message)):
             cipherIndex = self.ALPHABETS.index(message[letter]) + self.ALPHABETS.index(newKey[letter])
@@ -78,3 +78,4 @@ if __name__ == "__main__":
     print(se.removeSpace())
     print(se.spaceIndex)
     print(se.addSpace())
+    print(se.vigenereCipher("message", "key"))
