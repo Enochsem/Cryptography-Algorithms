@@ -7,6 +7,7 @@ class SEncrypt():
     ALPHABETS = string.ascii_lowercase
     ALPHABETS_LENGHT = len(ALPHABETS)
     spaceIndex = []
+    finalData = []
 
     def __init__(self, data, encrypt=None, decrypt=None):
         self.encrypt = encrypt
@@ -39,19 +40,19 @@ class SEncrypt():
         return newKey
     
     def vigenereCipher(self, key):
-        finalData = []
+        # finalData = []
         message = self.removeSpace() #remove whitespace
         newKey = self.keyFill(key, len(message), len(key)) #key fill
-        for letter in range(len(message)):
+        for letter_index_count, letter in enumerate(message):
             #Adding letter index to newkey letter index (generates new index for a letter)
-            cipherIndex = self.ALPHABETS.index(message[letter]) + self.ALPHABETS.index(newKey[letter])
+            cipherIndex = self.ALPHABETS.index(message[letter_index_count]) + self.ALPHABETS.index(newKey[letter_index_count])
             cipherIndexOverflow = abs(self.ALPHABETS_LENGHT - cipherIndex)
             if cipherIndex < self.ALPHABETS_LENGHT:
-                finalData.append(self.ALPHABETS[cipherIndex])
+                self.finalData.append(self.ALPHABETS[cipherIndex])
             else:
-                finalData.append(self.ALPHABETS[cipherIndexOverflow])
-        finalData = self.addSpace(finalData)
-        return "".join(finalData)
+                self.finalData.append(self.ALPHABETS[cipherIndexOverflow])
+        self.finalData = self.addSpace(self.finalData)
+        return "".join(self.finalData)
     
 
     def vigenereDecipher(self, cipherText, key):
