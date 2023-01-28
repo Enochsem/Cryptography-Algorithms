@@ -56,21 +56,21 @@ class SEncrypt():
     
 
     def vigenereDecipher(self, cipherText, key):
-        finalData = []
-        cipherText = removeSpace(cipherText)  #remove whitespace
-        newKey = keyFill(key, len(cipherText), len(key)) #key fill
-        for c in range(len(cipherText)):
-            msgIndex = alphabets.index(cipherText[c]) - alphabets.index(newKey[c])
+        # finalData = []
+        cipherText = self.removeSpace(cipherText)  #remove whitespace
+        newKey = self.keyFill(key, len(cipherText), len(key)) #key fill
+        for c, element in enumerate(cipherText):
+            msgIndex = self.ALPHABETS.index(cipherText[c]) - self.ALPHABETS.index(newKey[c])
             msgIndexOverflow = abs(msgIndex - (self.ALPHABETS_LENGHT-1))
             if msgIndex < 0:
                 msgIndex = msgIndex + self.ALPHABETS_LENGHT # +26 if msgIndex is negative
-                finalData.append(alphabets[msgIndex])
+                self.finalData.append(self.ALPHABETS[msgIndex])
             elif msgIndex <= (self.ALPHABETS_LENGHT-1) and msgIndex >= 0: #0 <= msgIndex <= 25
-                finalData.append(alphabets[msgIndex])
+                self.finalData.append(self.ALPHABETS[msgIndex])
             else: # pick from index value
-                finalData.append(alphabets[abs(msgIndexOverflow)-1])
-        finalData = addSpace(finalData)
-        return "".join(finalData)
+                self.finalData.append(self.ALPHABETS[abs(msgIndexOverflow)-1])
+        self.finalData = self.addSpace(self.finalData)
+        return "".join(self.finalData)
 
 
 if __name__ == "__main__":
@@ -79,4 +79,6 @@ if __name__ == "__main__":
     # print(se.removeSpace())
     # print(se.spaceIndex)
     # print(se.addSpace())
-    print(se.vigenereCipher("security"))
+    cipher = se.vigenereCipher("security")
+    print(cipher)
+    print(se.vigenereDecipher(cipher, "security"))
