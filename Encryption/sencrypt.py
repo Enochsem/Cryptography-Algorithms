@@ -56,7 +56,7 @@ class SEncrypt():
     
 
     def vigenereDecipher(self, cipherText, key):
-        # finalData = []
+        self.finalData.clear()
         cipherText = self.removeSpace(cipherText)  #remove whitespace
         newKey = self.keyFill(key, len(cipherText), len(key)) #key fill
         for c, element in enumerate(cipherText):
