@@ -38,18 +38,20 @@ class SEncrypt():
                     newKey += i
         return newKey
     
-    def vigenereCipher(self, message, key):
+    def vigenereCipher(self, key):
         finalData = []
         message = self.removeSpace() #remove whitespace
         newKey = self.keyFill(key, len(message), len(key)) #key fill
         for letter in range(len(message)):
+            #Adding letter index to newkey letter index (generates new index for a letter)
+            print(self.ALPHABETS.index(message[letter]))
             cipherIndex = self.ALPHABETS.index(message[letter]) + self.ALPHABETS.index(newKey[letter])
             cipherIndexOverflow = abs(self.ALPHABETS_LENGHT - cipherIndex)
             if cipherIndex < self.ALPHABETS_LENGHT:
                 finalData.append(self.ALPHABETS[cipherIndex])
             else:
                 finalData.append(self.ALPHABETS[cipherIndexOverflow])
-        finalData = addSpace(finalData)
+        finalData = self.addSpace(finalData)
         return "".join(finalData)
     
 
@@ -73,9 +75,9 @@ class SEncrypt():
 
 
 if __name__ == "__main__":
-    se = SEncrypt("Hello there just testing new sentence")
+    se = SEncrypt("system security and control")
     print(se.spaceIndex)
     print(se.removeSpace())
     print(se.spaceIndex)
     print(se.addSpace())
-    print(se.vigenereCipher("message", "key"))
+    print(se.vigenereCipher("security"))
