@@ -16,11 +16,11 @@ class SEncrypt():
         self.done = False
 
     
-    def removeSpace(self):
-        if " " in self.data:
-            self.spaceIndex = [counter for counter, element in enumerate(self.data) if element == " "]
-            return self.data.replace(" ", "")
-        return self.data
+    def removeSpace(self, data):
+        if " " in data:
+            self.spaceIndex = [counter for counter, element in enumerate(data) if element == " "]
+            return data.replace(" ", "")
+        return data
 
     def addSpace(self,data):
         for c, element in enumerate(self.spaceIndex):
@@ -41,7 +41,7 @@ class SEncrypt():
     
     def vigenereCipher(self, key):
         # finalData = []
-        message = self.removeSpace() #remove whitespace
+        message = self.removeSpace(self.data) #remove whitespace
         newKey = self.keyFill(key, len(message), len(key)) #key fill
         for letter_index_count, letter in enumerate(message):
             #Adding letter index to newkey letter index (generates new index for a letter)
@@ -56,7 +56,6 @@ class SEncrypt():
     
 
     def vigenereDecipher(self, cipherText, key):
-        #global self.ALPHABETS_LENGHT
         finalData = []
         cipherText = removeSpace(cipherText)  #remove whitespace
         newKey = keyFill(key, len(cipherText), len(key)) #key fill
