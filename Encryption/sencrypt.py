@@ -21,11 +21,11 @@ class SEncrypt():
             return self.data.replace(" ", "")
         return self.data
 
-    def addSpace(self):
+    def addSpace(self,data):
         for c, element in enumerate(self.spaceIndex):
-            list(self.data).insert(element, " ")
+            list(data).insert(element, " ")
         self.clearSpaceIndex()
-        return self.data
+        return data
 
     def clearSpaceIndex(self):
         self.spaceIndex.clear() 
@@ -44,7 +44,6 @@ class SEncrypt():
         newKey = self.keyFill(key, len(message), len(key)) #key fill
         for letter in range(len(message)):
             #Adding letter index to newkey letter index (generates new index for a letter)
-            print(self.ALPHABETS.index(message[letter]))
             cipherIndex = self.ALPHABETS.index(message[letter]) + self.ALPHABETS.index(newKey[letter])
             cipherIndexOverflow = abs(self.ALPHABETS_LENGHT - cipherIndex)
             if cipherIndex < self.ALPHABETS_LENGHT:
@@ -76,8 +75,8 @@ class SEncrypt():
 
 if __name__ == "__main__":
     se = SEncrypt("system security and control")
-    print(se.spaceIndex)
-    print(se.removeSpace())
-    print(se.spaceIndex)
-    print(se.addSpace())
+    # print(se.spaceIndex)
+    # print(se.removeSpace())
+    # print(se.spaceIndex)
+    # print(se.addSpace())
     print(se.vigenereCipher("security"))
