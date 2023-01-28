@@ -23,7 +23,7 @@ class SEncrypt():
 
     def addSpace(self,data):
         for c, element in enumerate(self.spaceIndex):
-            list(data).insert(element, " ")
+            data.insert(element, " ")
         self.clearSpaceIndex()
         return data
 
