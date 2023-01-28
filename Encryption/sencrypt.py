@@ -25,11 +25,11 @@ class SEncrypt():
     def addSpace(self,data):
         for c, element in enumerate(self.spaceIndex):
             data.insert(element, " ")
-        self.clearSpaceIndex()
+        self.clearList(self.spaceIndex)
         return data
 
-    def clearSpaceIndex(self):
-        self.spaceIndex.clear() 
+    def clearList(self,listData):
+        listData.clear() 
 
     def keyFill(self, key, dataLength, keyLength):
         newKey = ""
