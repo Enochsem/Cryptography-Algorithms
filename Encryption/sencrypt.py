@@ -40,7 +40,6 @@ class SEncrypt():
         return newKey
     
     def vigenereCipher(self, key):
-        # finalData = []
         message = self.removeSpace(self.data) #remove whitespace
         newKey = self.keyFill(key, len(message), len(key)) #key fill
         for letter_index_count, letter in enumerate(message):
@@ -51,12 +50,11 @@ class SEncrypt():
                 self.finalData.append(self.ALPHABETS[cipherIndex])
             else:
                 self.finalData.append(self.ALPHABETS[cipherIndexOverflow])
-        self.finalData = self.addSpace(self.finalData)
-        return "".join(self.finalData)
+        return "".join(self.addSpace(self.finalData))
     
 
     def vigenereDecipher(self, cipherText, key):
-        self.finalData.clear()
+        self.clearList(self.finalData)
         cipherText = self.removeSpace(cipherText)  #remove whitespace
         newKey = self.keyFill(key, len(cipherText), len(key)) #key fill
         for c, element in enumerate(cipherText):
@@ -69,16 +67,25 @@ class SEncrypt():
                 self.finalData.append(self.ALPHABETS[msgIndex])
             else: # pick from index value
                 self.finalData.append(self.ALPHABETS[abs(msgIndexOverflow)-1])
-        self.finalData = self.addSpace(self.finalData)
-        return "".join(self.finalData)
+        return "".join(self.addSpace(self.finalData))
+
+    def encrypt(message, key):
+        cipherText = []
+        alphabets = list(string.ascii_lowercase)
+        for i in message.lower():
+            if i != " ":
+                for letter in alphabets:
+                    if letter == i:
+                        letter_index = alphabets.index(letter)
+                        result = (letter_index + key) % 26
+                        cipherText.append(result)
+            else:
+                cipherText.append(" ")
+        return cipherText
 
 
 if __name__ == "__main__":
     se = SEncrypt("system security and control")
-    # print(se.spaceIndex)
-    # print(se.removeSpace())
-    # print(se.spaceIndex)
-    # print(se.addSpace())
     cipher = se.vigenereCipher("security")
     print(cipher)
     print(se.vigenereDecipher(cipher, "security"))
