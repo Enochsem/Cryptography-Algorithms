@@ -69,14 +69,14 @@ class SEncrypt():
                 self.finalData.append(self.ALPHABETS[abs(msgIndexOverflow)-1])
         return "".join(self.addSpace(self.finalData))
 
-    def encrypt(message, key):
+    def encrypt(self,message, key):
         cipherText = []
-        alphabets = list(string.ascii_lowercase)
+        ALPHABETS = list(string.ascii_lowercase)
         for i in message.lower():
             if i != " ":
-                for letter in alphabets:
+                for letter in ALPHABETS:
                     if letter == i:
-                        letter_index = alphabets.index(letter)
+                        letter_index = ALPHABETS.index(letter)
                         result = (letter_index + key) % 26
                         cipherText.append(result)
             else:
