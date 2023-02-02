@@ -83,6 +83,17 @@ class SEncrypt():
                     cipherText.append(result)
         return cipherText
 
+    def getText(cipherNumber):
+        cipherText = []
+        alphabets = list(string.ascii_lowercase)
+        for letter_number in cipherNumber:
+            if letter_number != " ":
+                result = alphabets[letter_number]
+                cipherText.append(result)
+            else:
+                cipherText.append(" ")
+        return "".join(cipherText)
+
 
 if __name__ == "__main__":
     se = SEncrypt("system security and control")
