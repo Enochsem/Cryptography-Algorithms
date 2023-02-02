@@ -85,10 +85,10 @@ class SEncrypt():
 
     def getText(self,cipherNumber):
         cipherText = []
-        alphabets = list(string.ascii_lowercase)
+        self.ALPHABETS = list(string.ascii_lowercase)
         for letter_number in cipherNumber:
             if letter_number != " ":
-                result = alphabets[letter_number]
+                result = self.ALPHABETS[letter_number]
                 cipherText.append(result)
             else:
                 cipherText.append(" ")
