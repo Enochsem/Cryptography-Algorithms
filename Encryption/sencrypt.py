@@ -73,6 +73,7 @@ class SEncrypt():
     # shift cipher
     def encrypt(self,message, key):
         cipherText = []
+        message = self.removeSpace(message)
         self.ALPHABETS = list(string.ascii_lowercase)
         for i in message.lower():
             if i != " ":
