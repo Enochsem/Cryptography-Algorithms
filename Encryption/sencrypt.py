@@ -92,6 +92,20 @@ class SEncrypt():
         cipherText = self.addSpace(cipherText) 
         return "".join(cipherText)
 
+    def decryption(cipherText, key):
+        plainText = []
+        alphabets = list(string.ascii_lowercase)
+        for i in cipherText.lower():
+            if i != " ":
+                for letter in alphabets:
+                    if letter == i:
+                        letter_index = alphabets.index(letter)
+                        result = (letter_index - key) % 26
+                        plainText.append(result)
+            else:
+                plainText.append(" ")
+        return plainText
+
 
 if __name__ == "__main__":
     se = SEncrypt("system security and control")
