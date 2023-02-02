@@ -87,11 +87,8 @@ class SEncrypt():
         cipherText = []
         self.ALPHABETS = list(string.ascii_lowercase)
         for letter_number in cipherNumber:
-            if letter_number != " ":
-                result = self.ALPHABETS[letter_number]
-                cipherText.append(result)
-            else:
-                cipherText.append(" ")
+            result = self.ALPHABETS[letter_number]
+            cipherText.append(result)
         return "".join(cipherText)
 
 
