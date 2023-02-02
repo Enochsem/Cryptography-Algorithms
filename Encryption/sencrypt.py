@@ -89,6 +89,7 @@ class SEncrypt():
         for letter_number in cipherNumber:
             result = self.ALPHABETS[letter_number]
             cipherText.append(result)
+        cipherText = self.addSpace(cipherText) 
         return "".join(cipherText)
 
 
