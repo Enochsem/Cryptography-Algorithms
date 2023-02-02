@@ -76,14 +76,11 @@ class SEncrypt():
         message = self.removeSpace(message)
         self.ALPHABETS = list(string.ascii_lowercase)
         for i in message.lower():
-            if i != " ":
-                for letter in self.ALPHABETS:
-                    if letter == i:
-                        letter_index = self.ALPHABETS.index(letter)
-                        result = (letter_index + key) % 26
-                        cipherText.append(result)
-            else:
-                cipherText.append(" ")
+            for letter in self.ALPHABETS:
+                if letter == i:
+                    letter_index = self.ALPHABETS.index(letter)
+                    result = (letter_index + key) % 26
+                    cipherText.append(result)
         return cipherText
 
 
