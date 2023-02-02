@@ -83,7 +83,7 @@ class SEncrypt():
                     cipherText.append(result)
         return cipherText
 
-    def getText(cipherNumber):
+    def getText(self,cipherNumber):
         cipherText = []
         alphabets = list(string.ascii_lowercase)
         for letter_number in cipherNumber:
